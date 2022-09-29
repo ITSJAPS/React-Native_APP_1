@@ -7,7 +7,11 @@ import React from 'react'
 //import { ObjetosLiterales } from './typescript/ObjetosLiterales';
 
 //Objeto contador
-import { Contador } from './components/Contador';
+//comentamos el objeto contador de componentes
+//import { Contador } from './components/Contador';
+
+//objeto contador hook
+import { ContadorHook } from './components/ContadorHook';
 
 const App = () => {
   return (
@@ -17,7 +21,8 @@ const App = () => {
       <hr />
       {/*<TiposBasicos/>*/}
       {/*<ObjetosLiterales/>*/}
-      {<Contador/>}
+      {/*<Contador/>*/}
+      {<ContadorHook/>}
     </div>
  
   )
