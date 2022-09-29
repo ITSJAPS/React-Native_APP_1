@@ -9,7 +9,13 @@ const AlFechaReg: Date = new Date();
 let AlExperiencia = 4;
 let AlActivo: boolean = true;
 
-//
+
+//declaramos un arreglo en typeScrip 
+let AlPasatiempos : string[] = ['Videogames', 'Atletismo', 'Biker', 'Cine'];
+
+//damos el metodo push para agregar al arreglo
+//AlPasatiempos.push(706);
+//AlPasatiempos.push(true);
 
 export const TiposBasicos = () => {
     //declaramos una variable default AlIdNombregit 
@@ -33,6 +39,8 @@ export const TiposBasicos = () => {
            Experiencia en años:{AlExperiencia},
            <br />
            Estatus:{(AlActivo)?'Activo':'No Activo'}
+           <br />
+           Pasa tiempos:{AlPasatiempos}
         </div>
         
     )
