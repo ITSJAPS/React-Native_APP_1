@@ -7,11 +7,15 @@ import React from 'react'
 //import { ObjetosLiterales } from './typescript/ObjetosLiterales';
 
 //Objeto contador
-//comentamos el objeto contador de componentes
+//comentamos el objeto contador de componentes4.7
 //import { Contador } from './components/Contador';
 
 //objeto contador hook
-import { ContadorHook } from './components/ContadorHook';
+//comentamos el imrpot de contadorhook 4.8
+//import { ContadorHook } from './components/ContadorHook';
+
+//useReduccer componente
+import { Login } from './components/Login';
 
 const App = () => {
   return (
@@ -22,7 +26,8 @@ const App = () => {
       {/*<TiposBasicos/>*/}
       {/*<ObjetosLiterales/>*/}
       {/*<Contador/>*/}
-      {<ContadorHook/>}
+      {/*<ContadorHook/>*/}
+      {<Login/>}
     </div>
  
   )
