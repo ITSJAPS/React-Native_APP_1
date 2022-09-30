@@ -15,7 +15,12 @@ import React from 'react'
 //import { ContadorHook } from './components/ContadorHook';
 
 //useReduccer componente
-import { Login } from './components/Login';
+//comentamos la importacion 4.9
+//import { Login } from './components/Login';
+import { Usuarios } from './components/Usuarios';
+
+//creamos el componente usuarios
+
 
 const App = () => {
   return (
@@ -27,7 +32,8 @@ const App = () => {
       {/*<ObjetosLiterales/>*/}
       {/*<Contador/>*/}
       {/*<ContadorHook/>*/}
-      {<Login/>}
+      {/*<Login/>*/}
+      {<Usuarios/>}
     </div>
  
   )
