@@ -1,13 +1,14 @@
 import React from 'react'
-import {useState} from 'react';
+//import {useState} from 'react';
+import { useCounter } from './hooks/useCounter';
 
 export const ContadorHook = () => {
-    const [valor, setValor] = useState(0);
-
+    /*const [valor, setValor] = useState(0);
     const acumular=(numero:number)=>{
         setValor(valor+numero);
-    }
+    }*/
 
+    const {valor, acumular} = useCounter();
     return (
         <div>
             <h3>Contador Hook: <small>{valor}</small></h3>
