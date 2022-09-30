@@ -13,7 +13,15 @@ const initialState: AuthState = {
     username: '',
     nombre: ''
 }
-type AuthAction = { type: 'logout'}
+
+
+type LoginPayLoad = {
+    username: string,
+    nombre: string
+}
+type AuthAction =
+    | { type: 'logout'}
+    | {type: 'login', payload: LoginPayLoad};
 
 const authReducer = (state: AuthState, action: AuthAction): AuthState => {
     switch (action.type) {
@@ -23,6 +31,16 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
                 token: null,
                 username: '',
                 nombre: ''
+            }
+        case 'login':
+            const {nombre, username} = action.payload;
+            return {
+                validando: false,
+                token: 'MITOKEN1234567890',
+                //username: action.payload.username,
+                //nombre: action.payload.nombre,
+                username,
+                nombre,
             }
             break;
         default:
@@ -44,6 +62,25 @@ export const Login = () => {
             }, 2500);
         }, []);
 
+        const login = () => {
+            dispatch({
+                type: 'login',
+                payload: {
+                    username: 'JAPS',
+                    nombre: 'Jorge Alberto'
+                }
+            })
+        }
+        const logout = () => {
+            dispatch({
+                type: 'logout',
+             
+            })
+        }
+    
+    
+
+
     // si se agregara una dependencia 
     if (state.validando) {
         return (
@@ -63,7 +100,7 @@ export const Login = () => {
         (state.token)?
             (
             <div className="japsAlertSuccess_Div">
-                Autenticado... {state.nombre}
+                Autenticado:  {state.username}
             </div>
             )
             :
@@ -74,16 +111,28 @@ export const Login = () => {
             </div>
             )
             }
-            <button
-                className="japsLogin_Button"
-            >
-                Login   
-            </button>   
-            <button
+            {
+                (state.token)?
+                (
+                <button
+                name="japsLogout_Button"
                 className="japsLogout_Button"
+                onClick={logout}
             >
                 Logout 
             </button> 
+                )
+                :
+                (
+            <button
+                name="japsLogin_Button"
+                className="japsLogin_Button"
+                onClick={login}
+            >
+                Login   
+            </button>   
+                )
+            }
         </>
     )
 }
