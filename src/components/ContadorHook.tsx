@@ -8,7 +8,7 @@ export const ContadorHook = () => {
         setValor(valor+numero);
     }*/
 
-    const {valor, acumular} = useCounter();
+    const {valor, acumular} = useCounter(50);
     return (
         <div>
             <h3>Contador Hook: <small>{valor}</small></h3>
