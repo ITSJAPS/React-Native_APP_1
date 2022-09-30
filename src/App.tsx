@@ -17,10 +17,10 @@ import React from 'react'
 //useReduccer componente
 //comentamos la importacion 4.9
 //import { Login } from './components/Login';
-import { Usuarios } from './components/Usuarios';
+
 
 //creamos el componente usuarios
-
+import { Usuarios } from './components/Usuarios';
 
 const App = () => {
   return (

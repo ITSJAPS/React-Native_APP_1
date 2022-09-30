@@ -1,4 +1,15 @@
 export const Usuarios = () => {
+
+    useEffect(() => {
+        //llamado de la API
+        reqRespApi.get('/users')
+        .then(resp=> {
+                console.log(resp);
+        })
+        .catch(err => console.log(err))
+        }, [])
+    
+
     return (
         <>
             <h3>Usuarios</h3>
