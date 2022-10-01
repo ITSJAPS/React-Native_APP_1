@@ -20,7 +20,12 @@ import React from 'react'
 
 
 //creamos el componente usuarios
-import { Usuarios } from './components/Usuarios';
+//comentamos el componente Usuarios 4.12
+//import { Usuarios } from './components/Usuarios';
+
+//creamos coponente Formularios 
+import { Formularios } from './components/Formularios';
+
 
 const App = () => {
   return (
@@ -33,7 +38,8 @@ const App = () => {
       {/*<Contador/>*/}
       {/*<ContadorHook/>*/}
       {/*<Login/>*/}
-      {<Usuarios/>}
+      {/*<Usuarios/>*/}
+      {<Formularios/>}
       
     </div>
  
