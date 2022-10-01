@@ -2,18 +2,21 @@ import { useEffect, useRef, useState } from "react";
 import { reqRespApi } from "../../api/reqRes";
 import { ReqRespUsuarioListado, Usuario } from "../../interfaces/resResp";
 
+
+export const useUsuarios = () => {
+
 const [usuarios, setUsuarios] = useState<Usuario[]>([]);
-    const ficRefPage = useRef(1);
+    const japsRefPage = useRef(1);
     useEffect(() => {
-        //FIC: llamar función de carga de usuarios.
-        ficFnCargaUsuarios();
+        // llamar función de carga de usuarios.
+        japsFnCargaUsuarios();
     }, []);
-    const ficFnCargaUsuarios = async () => {
+    const japsFnCargaUsuarios = async () => {
         const ficResponse = await
-        //FIC: llamado de la API
+        // llamado de la API
         reqRespApi.get<ReqRespUsuarioListado>('/users', {
             params: {
-                page: ficRefPage.current
+                page: japsRefPage.current
             }
         })
         .then(resp=> {
@@ -24,7 +27,7 @@ const [usuarios, setUsuarios] = useState<Usuario[]>([]);
             //console.log(resp.data.data);
             if ( resp.data.data.length > 0 ) {
                 setUsuarios(resp.data.data);
-                ficRefPage.current ++;
+                japsRefPage.current ++;
             }
             else {
                 alert('No hay mas registros');
@@ -32,3 +35,16 @@ const [usuarios, setUsuarios] = useState<Usuario[]>([]);
         })
         .catch(err => console.log(err))
     }
+        //funciones
+        const ficFnPaginaSiguiente = ()  => {
+        }
+        const ficFnPaginaAnterior = () => {
+        }
+
+    return{
+        usuarios,
+        //japsFnCargaUsuarios
+        ficFnPaginaAnterior,
+        ficFnPaginaSiguiente
+    }
+}

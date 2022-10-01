@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { reqRespApi } from '../api/reqRes';
 import { ReqRespUsuarioListado, Usuario } from '../interfaces/resResp';
+import { useUsuarios } from './hooks/useUsuarios';
 
 export const Usuarios = () => {
 
-    const [usuarios, setUsuarios] = useState<Usuario[]>([]);
+    const [usuario, setUsuarios] = useState<Usuario[]>([]);
+    const { usuarios, ficFnPaginaSiguiente, ficFnPaginaAnterior} = useUsuarios();
 
     const japsRefPage = useRef(0);
 
@@ -41,6 +43,8 @@ export const Usuarios = () => {
 
 
    
+
+
     const renderItem = (usuario: Usuario) => {
         return (
             <tr key = {usuario.id.toString()}>
@@ -83,16 +87,22 @@ export const Usuarios = () => {
                     </thead>
                     <tbody>
                         {
-                        usuarios.map(FicArgUsuario => renderItem(FicArgUsuario))
+                        usuarios.map((japsArgUsuario: Usuario) => renderItem(japsArgUsuario))
                     }
                 </tbody>
             </table>
-            <button onClick={japsFNCargaUsuarios}>
-                Anterior
+            <button
+                className="btn btn-primary"
+                onClick= { japsFnCargaUsuarios }
+                >
+                Anterior       
             </button>
-
-            <button onClick = {japsFNCargaUsuarios}>
-                Siguiente
+            &nbsp;           
+            <button
+                className="btn btn-primary"
+                onClick= { japsFnCargaUsuarios }
+                >
+                Siguiente       
             </button>
         </>
     )
