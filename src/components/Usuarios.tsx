@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { reqRespApi } from '../api/reqRes';
 import { ReqRespUsuarioListado, Usuario } from '../interfaces/resResp';
 
@@ -6,23 +6,41 @@ export const Usuarios = () => {
 
     const [usuarios, setUsuarios] = useState<Usuario[]>([]);
 
-    const japsFNCargaUsuarios = ()=>{
-         //llamado de la API
-         reqRespApi.get<ReqRespUsuarioListado>('/users')
-         .then(resp=> {
+    const japsRefPage = useRef(0);
+
+    useEffect(() => {
+        
+        japsFNCargaUsuarios();
+         }, []);
+
+    const japsFNCargaUsuarios = async()=>{
+        const japsResponse= await
+
+        reqRespApi.get<ReqRespUsuarioListado>('/users', {
+            params: {
+                page: japsRefPage.current
+            }
+        }).then(resp=> {
                //  console.log(resp.data.data[0].first_name);
                //  console.log(resp.data.data)
                //  console.log(resp.data.data[0].email)
                //  console.log(resp.data.data)
-               setUsuarios(resp.data.data);
+
+               if(resp.data.data.length>0){
+                setUsuarios(resp.data.data);
+                japsRefPage.current++;
+               }
+               else{
+                alert('Son todos los registros')
+               }
+              
              })
          .catch(err => console.log(err))
     }
 
 
-    useEffect(() => {
-       japsFNCargaUsuarios();
-        }, [])
+
+   
     const renderItem = (usuario: Usuario) => {
         return (
             <tr key = {usuario.id.toString()}>
