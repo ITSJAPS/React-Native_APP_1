@@ -12,7 +12,7 @@ const [usuarios, setUsuarios] = useState<Usuario[]>([]);
         japsFnCargaUsuarios();
     }, []);
     const japsFnCargaUsuarios = async () => {
-        const ficResponse = await
+        const japsResponse = await
         // llamado de la API
         reqRespApi.get<ReqRespUsuarioListado>('/users', {
             params: {
@@ -27,7 +27,6 @@ const [usuarios, setUsuarios] = useState<Usuario[]>([]);
             //console.log(resp.data.data);
             if ( resp.data.data.length > 0 ) {
                 setUsuarios(resp.data.data);
-                japsRefPage.current ++;
             }
             else {
                 alert('No hay mas registros');
@@ -35,16 +34,22 @@ const [usuarios, setUsuarios] = useState<Usuario[]>([]);
         })
         .catch(err => console.log(err))
     }
-        //funciones
-        const ficFnPaginaSiguiente = ()  => {
-        }
-        const ficFnPaginaAnterior = () => {
-        }
+         //funciones
+            const japsFnPaginaSiguiente = ()  => {
+                japsRefPage.current ++;
+                japsFnCargaUsuarios(); 
+            }
+            const japsFnPaginaAnterior = () => {
+                if ( japsRefPage.current > 1 ){
+                    japsRefPage.current --;
+                    japsFnCargaUsuarios();
+                } 
+            }
 
     return{
         usuarios,
         //japsFnCargaUsuarios
-        ficFnPaginaAnterior,
-        ficFnPaginaSiguiente
+        japsFnPaginaAnterior,
+        japsFnPaginaSiguiente
     }
 }

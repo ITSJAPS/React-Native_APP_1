@@ -6,7 +6,7 @@ import { useUsuarios } from './hooks/useUsuarios';
 export const Usuarios = () => {
 
     const [usuario, setUsuarios] = useState<Usuario[]>([]);
-    const { usuarios, ficFnPaginaSiguiente, ficFnPaginaAnterior} = useUsuarios();
+    const { usuarios, japsFnPaginaSiguiente, japsFnPaginaAnterior} = useUsuarios();
 
     const japsRefPage = useRef(0);
 
@@ -93,14 +93,16 @@ export const Usuarios = () => {
             </table>
             <button
                 className="btn btn-primary"
-                onClick= { japsFnCargaUsuarios }
+                //onClick= { japsFnCargaUsuarios }
+                onClick= { japsFnPaginaAnterior }
                 >
                 Anterior       
             </button>
             &nbsp;           
             <button
                 className="btn btn-primary"
-                onClick= { japsFnCargaUsuarios }
+                //onClick= { japsFnCargaUsuarios }
+                onClick= { japsFnPaginaSiguiente }
                 >
                 Siguiente       
             </button>
